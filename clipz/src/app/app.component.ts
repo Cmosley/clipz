@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-root', 
+  //template: `<p>Hello World!</p>`,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  //styles: ['']
 })
+
 export class AppComponent {
-  title = 'clipz';
+  name = 'Luis'
+  imgURL = 'https://picsum.photos/id/237/500/500'
+
+  getName() {
+    return this.name;
+  }
 }
