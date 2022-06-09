@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output, OnInit, OnChanges, DoCheck, 
-AfterContentChecked, AfterContentInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+AfterContentChecked, AfterContentInit, AfterViewInit, AfterViewChecked, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-post',
@@ -13,7 +13,8 @@ export class PostComponent implements
     AfterContentInit,
     AfterContentChecked,
     AfterViewInit,
-    AfterViewChecked
+    AfterViewChecked,
+    OnDestroy
 {
   @Input('img') postImg = '';
   @Output() imgSelected = new EventEmitter<string>();
@@ -37,13 +38,20 @@ export class PostComponent implements
   ngAfterContentChecked(): void {
       console.log('content check');
   }
+
   ngAfterContentInit(): void {
       console.log('content init');
   }
+
   ngAfterViewChecked(): void {
       console.log('view checked');
   }
+
   ngAfterViewInit(): void {
       console.log('view init');
+  }
+
+  ngOnDestroy(): void {
+      console.log('destroyed')
   }
 }
