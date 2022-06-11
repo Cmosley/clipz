@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -18,11 +18,17 @@ export class RegisterComponent {
     Validators.required,
     Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm),
   ]);
-  confirmPassword = new FormControl('', [
+  confirmPassword = new FormControl('', [Validators.required]);
+  phoneNumber = new FormControl('', [
     Validators.required,
-    
+    Validators.minLength(13),
+    Validators.maxLength(13),
   ]);
-  phoneNumber = new FormControl('');
+
+  // alert properties
+  showAlert = false;
+  alertMessage = 'Please wait! Your account is being created';
+  alertColor = 'blue';
 
   registerForm = new FormGroup({
     name: this.name,
@@ -32,4 +38,10 @@ export class RegisterComponent {
     confirmPassword: this.confirmPassword,
     phoneNumber: this.phoneNumber,
   });
+
+  register() {
+    this.showAlert = true;
+    this.alertMessage = 'Please wait! Your account is being created';
+    this.alertColor = 'blue'
+  }
 }
